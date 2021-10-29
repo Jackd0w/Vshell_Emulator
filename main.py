@@ -49,6 +49,17 @@ def cd(next_dir):
         else:
             tmp_dir = current_dir + next_dir + '/'
 
+    
+def cat(file_directory):
+    if file_directory[0] !='/':
+        file_directory = current_dir + file_directory
+
+    file_sub_system = zipfile.Path(archieve_path, at = file_directory[1:])
+    if file_sub_system.is_file() and file_sub_system.exists():
+        print(file_sub_system.read_text())
+    else:
+        print('Wrong directory')
+
 
 
 if __name__ == '__main__':
