@@ -61,6 +61,23 @@ def cat(file_directory):
         print('Wrong directory')
 
 
+def ls():
+    object_list = list(
+        zipfile.Path(
+            archieve_path,
+            at = current_dir[1:]
+        ).iterdir
+    )
+    print(
+        *list(
+            map(
+                operator.attrgetter('name'),
+                object_list
+            )
+        )
+    )
+
+
 
 if __name__ == '__main__':
     print('''
