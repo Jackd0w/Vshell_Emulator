@@ -78,6 +78,34 @@ def ls():
     )
 
 
+#def pwd():
+
+
+def main():
+    user_input = input('%s@%s %s >>> ' % ('root', host_name, current_dir)).split()
+
+    input_size = len(user_input)
+    if input_size == 0:
+        return
+
+    if input_size == 1 and user_input[0] == 'help':
+        help()
+    elif input_size == 1 and user_input[0] == 'exit':
+        sys.exit(0)
+    elif input_size == 1 and user_input[0] == 'pwd':
+        print(current_dir)
+    elif input_size == 1 and user_input[0] == 'ls':
+        ls()
+    elif input_size == 2 and user_input[0] == 'cd':
+        cd(user_input[1])
+    elif input_size == 2 and user_input[0] == 'cat':
+        cat(user_input[1])
+    else:
+        print('\nWrong input. Check syntax or command list\n')
+
+
+
+
 
 if __name__ == '__main__':
     print('''
@@ -85,5 +113,5 @@ if __name__ == '__main__':
     Made by Andrey Komarov
     These shell commands are defined internally. Type 'help' to see this list.
     ''')
-
-    help()
+    while True:
+        main()
